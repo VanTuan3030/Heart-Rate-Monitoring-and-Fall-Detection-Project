@@ -14,12 +14,6 @@ An IoT-based smart wearable device designed for real-time health tracking and fa
 
 ---
 
-## 🛠️ System Architecture
-
-The overall hardware communication and data flow of the project can be referenced in the system block diagram below:
-
-> For a visual representation of the hardware connections, please refer to the architecture diagram file named **"image_76413c.png"**.
-
 ### Data Flow Breakdown:
 1.  **Sensors (MAX30102 & MPU6050):** Capture physiological metrics and movement data, transferring raw digital signals via **I2C** to the central controller.
 2.  **Central MCU (STM8):** Acts as the main brain, filtering background noise, processing the signals, and forwarding clean data packets via **UART**.
