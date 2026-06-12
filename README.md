@@ -6,52 +6,29 @@ An IoT-based smart wearable device designed for real-time health tracking and fa
 
 ## 🚀 Key Features
 
-*   **Continuous Heart Rate Tracking:** Utilizes optical PPG technology via the MAX30102 sensor to track heart rate in real-time.
-*   **Intelligent Fall Detection:** Uses the MPU6050 6-DOF accelerometer and gyroscope to recognize sudden orientation and acceleration changes.
-*   **Low Energy Wireless Communication:** Transmits processed health data seamlessly to smartphones using Bluetooth Low Energy (BLE).
-*   **Cloud Synchronization:** Real-time data logging and synchronization with Firebase Realtime Database.
-*   **Ultra-low Cost Design:** Hardware architecture optimized around an affordable 8-bit MCU to minimize overall production costs.
+* **Continuous Heart Rate Tracking:** Utilizes optical PPG technology via the MAX30102 sensor to track heart rate in real-time.
+* **Intelligent Fall Detection:** Uses the MPU6050 6-DOF accelerometer and gyroscope to recognize sudden orientation and acceleration changes.
+* **Low Energy Wireless Communication:** Transmits processed health data seamlessly to smartphones using Bluetooth Low Energy (BLE).
+* **Cloud Synchronization:** Real-time data logging and synchronization with Firebase Realtime Database.
+* **Ultra-low Cost Design:** Hardware architecture optimized around an affordable 8-bit MCU to minimize overall production costs.
 
 ---
 
-### Data Flow Breakdown:
-1.  **Sensors (MAX30102 & MPU6050):** Capture physiological metrics and movement data, transferring raw digital signals via **I2C** to the central controller.
-2.  **Central MCU (STM8):** Acts as the main brain, filtering background noise, processing the signals, and forwarding clean data packets via **UART**.
-3.  **Wireless Core (ESP32):** Receives the compiled packets and advertises them over **BLE Notify** directly to the user's mobile device.
-4.  **Android App:** Decodes the BLE data stream, displays the metrics instantly, and pushes historical logs onto **Firebase** via an Internet connection.
+## 🛠️ System Architecture & Data Flow
 
----
+The system architecture is split into data collection, local preprocessing, wireless bridging, and cloud monitoring.
 
-## 🔌 Hardware Specifications
-
-| Component | Model / Type | Role in System | Key Technical Specs |
-| :--- | :--- | :--- | :--- |
-| **Central MCU** | STM8S103F3P6 | Data processing & sensor acquisition| 8-bit Harvard core, 16 MHz, 8KB Flash |
-| **Wireless Core** | ESP32-WROOM-32D | BLE transmission & WiFi gateway | 32-bit dual-core, 240MHz, BLE 4.2 & WiFi |
-| **Heart Rate Sensor**| MAX30102 | Optical pulse oximeter & heart-rate monitor | PPG method, 18-bit ADC, I2C interface |
-| **Motion Sensor** | MPU6050 | 6-DOF Accelerometer + Gyroscope | 16-bit ADC, I2C interface, fall detection |
-| **Power Management**| Li-ion Battery / AMS1117| Rechargeable power source | 3.7V Li-ion battery, regulated down to 3.3V |
-
----
-
-## 💻 Software Stack
-
-*   **ST Visual Develop (STVD):** Used for coding, compiling, and flashing the firmware onto the STM8 microcontroller.
-*   **Arduino IDE:** Employed for prototyping and developing the ESP32 BLE firmware.
-*   **Android Studio:** Used to build the mobile interface that connects via BLE and manages cloud data streams.
-*   **Firebase Realtime Database:** Cloud backend utilized for immediate data synchronization and historical logs.
-
----
-
-## ⚠️ Limitations & Future Enhancements
-
-*   **Precision Constraints:** Low-cost commercial sensors were selected due to budget limits, making the device susceptible to noise during high-intensity movements.
-*   **Basic Analytics:** The current mobile application acts as a real-time monitor and logger, without advanced predictive healthcare AI or smart anomaly alerts.
-*   **Data Security:** The Firebase implementation relies on standard rules, requiring future encryption updates for production safety.
-
----
-
-## 👥 Authors
-
-*   **Võ Văn Tuấn** - *University of Transport and Communications (HCMC Campus)*
-*   **Project Advisors:** TS. Nguyễn Văn Trung / TS. Lê Tiến Lộc
+```text
+[ Sensors: MAX30102 / MPU6050 ]
+               │
+               ▼ (I2C Bus)
+  [ Central MCU: STM8S103F3 ]  <-- (Low-level filtering & State Machine)
+               │
+               ▼ (UART @ 9600 bps)
+ [ Wireless Core: ESP32-WROOM ] <-- (BLE Gateway & NUS Emulation)
+               │
+               ▼ (BLE Notify Stream)
+    [ Android Application ]    <-- (UI Display & Threshold Checking)
+               │
+               ▼ (WiFi / Cellular Link)
+ [ Firebase Realtime Database ] <-- (Cloud Logs & History Tracking)
