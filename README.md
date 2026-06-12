@@ -1,16 +1,16 @@
 # Heart Rate Monitoring and Fall Detection Project
 
-An IoT-based smart wearable device designed for real-time health tracking and fall detection[cite: 1, 2]. The system monitors the user's heart rate continuously to prevent cardiovascular risks and tracks body orientation to detect sudden falls, providing immediate alerts via a mobile application[cite: 1, 2].
+An IoT-based smart wearable device designed for real-time health tracking and fall detection. The system monitors the user's heart rate continuously to prevent cardiovascular risks and tracks body orientation to detect sudden falls, providing immediate alerts via a mobile application.
 
 ---
 
 ## 🚀 Key Features
 
-*   **Continuous Heart Rate Tracking:** Utilizes optical PPG technology to track heart rate in real-time[cite: 1, 2].
-*   **Intelligent Fall Detection:** Uses a 6-DOF accelerometer and gyroscope to distinguish between normal activities and accidental falls[cite: 1, 2].
-*   **Low Energy Wireless Communication:** Transmits data seamlessly to smartphones using Bluetooth Low Energy (BLE)[cite: 1, 2].
-*   **Cloud Synchronization:** Real-time data logging and synchronization with Firebase Database[cite: 1, 2].
-*   **Ultra-low Cost & Compact Design:** Optimized hardware using an 8-bit MCU to minimize production costs and power consumption[cite: 1, 2].
+*   **Continuous Heart Rate Tracking:** Utilizes optical PPG technology to track heart rate in real-time.
+*   **Intelligent Fall Detection:** Uses a 6-DOF accelerometer and gyroscope to distinguish between normal activities and accidental falls.
+*   **Low Energy Wireless Communication:** Transmits data seamlessly to smartphones using Bluetooth Low Energy (BLE).
+*   **Cloud Synchronization:** Real-time data logging and synchronization with Firebase Database.
+*   **Ultra-low Cost & Compact Design:** Optimized hardware using an 8-bit MCU to minimize production costs and power consumption.
 
 ---
 
