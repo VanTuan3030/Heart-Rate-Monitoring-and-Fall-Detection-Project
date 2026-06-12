@@ -43,14 +43,6 @@ An IoT-based smart wearable device designed for real-time health tracking and fa
 
 ---
 
-## 📝 Project Documentation
-
-The complete project reporting, measurement analysis, and presentation slides can be found in the following files included in this repository:
-*   Detailed project reports and final metrics are located in the document **"Baocao_IOT_Cuoiki.docx"**.
-*   Presentation slides and system demonstrations are available in **"Baocao_DOLUONG_Cuoiki.pptx"** and **"Baocao_IOT_Cuoiki.pptx"**.
-
----
-
 ## ⚠️ Limitations & Future Enhancements
 
 *   **Precision Constraints:** Low-cost commercial sensors were selected due to budget limits, making the device susceptible to noise during high-intensity movements.
